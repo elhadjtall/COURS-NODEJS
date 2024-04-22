@@ -1,8 +1,17 @@
-// on import  express et nodemon
+// on import  express et nodemon c'est à dire dépendances
 const express = require('express');
 const mongoose = require('mongoose'); 
+const routes = require('./routes');
 require('dotenv').config();
 
+// Initialisation de l'application express, on définis le numéro de 
+let app = express();
+let port = 3000;
+
+// Message de bienvenue sur localhost:3000
+app.get('/', (req, res) => {
+    res.send('welcome to my backend');
+})
 // Ici on va se connecter à la base de donnée grêce Mongoose
 mongoose
     .connect(process.env.MONGO_URI, {})
@@ -13,8 +22,6 @@ mongoose
         console.log('Erreur de connexion', err)
 })
 // On va initialiser et demarerrer notre serveur
-let app = express();
-let port = 3000;
 app.listen(port, () => {
     console.log("Server en ligne sur le port 3000");
 });
