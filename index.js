@@ -1,14 +1,16 @@
 // on import  express et nodemon
-const express = require('express')
-const mongoose = require('mongoose')
+const express = require('express');
+const mongoose = require('mongoose'); 
+require('dotenv').config();
 
 // Ici on va se connecter à la base de donnée grêce Mongoose
-mongoose.connect('', {})
-.then(() => {
-    console.log("connecter à la BDD");
+mongoose
+    .connect(process.env.MONGO_URI, {})
+    .then(() => {
+        console.log("connecter à la BDD");
 })
-.catch((err) => {
-    console.log('Erreur de connexion', err)
+    .catch((err) => {
+        console.log('Erreur de connexion', err)
 })
 // On va initialiser et demarerrer notre serveur
 let app = express();
