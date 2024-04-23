@@ -41,10 +41,18 @@ exports.createPokemon = async (req, res) => {
 };
 
 // edit a pokemon
-// Editer un pokemon
+// Editer un pokemon ou update des pokemons
 exports.editPokemon = async (req, res) => {
-    
-};
+    try {
+      const updatedPokemon = await Pokemon.findByIdAndUpdate(
+        req.params.id, 
+        req.body, );
+      if (!updatedPokemon) return res.status(404).json("Pokemon not found.");
+      res.status(200).json(updatedPokemon);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  };  
  
 exports.deletePokemon = async (req, res) => {
     try {
