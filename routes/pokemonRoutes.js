@@ -11,7 +11,7 @@ router.get('/:id', pokemonController.getOnePokemon)
 
 // Create a Pokemon
 // POST sur localhost:3000/api/pokemons
-router.post('/', pokemonController.postPokemon)
+router.post('/', pokemonController.createPokemon)
 // Edit a Pokemon
 router.put('/:id', (req, res) => {
     res.send('Edit a Pokemon');

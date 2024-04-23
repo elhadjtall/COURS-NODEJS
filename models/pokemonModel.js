@@ -8,7 +8,6 @@ const pokemonSchema = new mongoose.Schema(
     name: {
       type: String,
       required: true,
-      unique: true,
     },
     hp: Number,
     cp: Number,
@@ -22,5 +21,5 @@ const pokemonSchema = new mongoose.Schema(
 );
 
 // Importer le schema du pokemon qui determine les données de la base
-const pokemon = mongoose.model("Pokemon", pokemonSchema);
-module.exports = pokemon;
+const Pokemon = mongoose.model("Pokemon", pokemonSchema);
+module.exports = Pokemon;

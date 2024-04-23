@@ -25,7 +25,7 @@ exports.getOnePokemon = async (req, res) => {
 // Creer une pokemon
 exports.createPokemon = async (req, res) => {
     try {
-        const newPokemon = new Pokemon; ({
+        const newPokemon = new Pokemon ({
             name : req.body.name,
             hp: req.body.hp,
             cp: req.body.cp,
@@ -34,9 +34,9 @@ exports.createPokemon = async (req, res) => {
         });
         // Ce code permet de creer un new pokemon
         const savePokemon = await newPokemon.save();
-        res.status(201).json("Pokemon created successfully.");
+        res.status(201).json(savePokemon);
       } catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(400).json({ message: error.message });
       }
 };
 
