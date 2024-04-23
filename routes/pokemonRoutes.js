@@ -2,33 +2,23 @@ const express = require('express');
 const router = express.Router();
 const pokemonController = require('../controllers/pokemonController');
 
-//recuper tous les pokemons
-//Get sur localhost
+// Get all pokemons
+// GET sur localhost:3000/api/pokemons
 router.get('/', pokemonController.getAllPokemons)
+// Get ONE pokemon
+// localhost:3000/api/pokemons/9230774h2203HDkdj
+router.get('/:id', pokemonController.getOnePokemon)
 
-// Récupérer tous les pokemons
-// GET : localhost:3000/api/pokemons
-router.get('/', (req, res) => {
-    res.send('Liste de tous les Pokémons');
-});
-
-// Récupérer un pokemon par son ID
-// GET : localhost:3000/api/pokemons/8776HJH
-router.get('/:id', (req, res) => {
-    res.send('Récupérer un Pokémon par son ID');
-});
-
-// Modifier un pokemon
-// PUT : localhost:3000/api/pokemons/:id
+// Create a Pokemon
+// POST sur localhost:3000/api/pokemons
+router.post('/', pokemonController.postPokemon)
+// Edit a Pokemon
 router.put('/:id', (req, res) => {
-    res.send('Modifier un Pokémon');
-});
-
-// Supprimer un pokemon
-// DELETE : localhost:3000/api/pokemons/:id
+    res.send('Edit a Pokemon');
+})
+// Delete a Pokemon
 router.delete('/:id', (req, res) => {
-    res.send('Supprimer un Pokémon');
-});
+    res.send('Delete a Pokemon');
+})
 
-// Exporter le router pour pouvoir l'utiliser ailleurs, notamment dans index.js
-module.exports = router;
+module.exports = router

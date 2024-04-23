@@ -9,6 +9,7 @@ let app = express();
 let port = 3000;
 
 // Message de bienvenue sur localhost:3000
+app.use(express.json());
 app.get('/', (req, res) => {
     res.send('welcome to my backend');
 })
