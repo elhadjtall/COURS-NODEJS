@@ -12,6 +12,7 @@ let port = 3000;
 app.get('/', (req, res) => {
     res.send('welcome to my backend');
 })
+app.use("/api", routes);
 // Ici on va se connecter à la base de donnée grêce Mongoose
 mongoose
     .connect(process.env.MONGO_URI, {})
