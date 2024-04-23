@@ -6,7 +6,7 @@ const req = require('express/lib/request');
 //Un GET sur http://localhost:3000/users/
 // Va nous ramener sur usersController.getAllusers()
 const router = express.Router();
-const pokemonRoutes = require('./routes/pokemonRoutes');
+const pokemonRoutes = require('./routes/pokemonROutes');
 
 // Message de bienvenue sur mon API sur localhost:3000/api
 router.get('/'), (req, res) => {
