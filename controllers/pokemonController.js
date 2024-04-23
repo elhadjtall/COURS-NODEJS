@@ -42,6 +42,18 @@ exports.createPokemon = async (req, res) => {
 
 // edit a pokemon
 // Editer un pokemon
-exports.editPokemon = async (req, res) => {};
+exports.editPokemon = async (req, res) => {
+    
+};
  
-exports.deletePokemon = async (req, res) => {};
+exports.deletePokemon = async (req, res) => {
+    try {
+      const pokemon = await Pokemon.findByIdAndDelete(req.params.id);
+      if (!pokemon) return res.status(404).json("Pokemon not found.");
+  
+      res.status(200).json("Pokemon deleted successfully.");
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  };
+  

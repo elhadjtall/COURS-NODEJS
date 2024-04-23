@@ -17,8 +17,6 @@ router.put('/:id', (req, res) => {
     res.send('Edit a Pokemon');
 })
 // Delete a Pokemon
-router.delete('/:id', (req, res) => {
-    res.send('Delete a Pokemon');
-})
+router.delete('/:id', pokemonController.deletePokemon)
 
 module.exports = router
