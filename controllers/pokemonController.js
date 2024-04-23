@@ -1,5 +1,7 @@
 const Pokemon = require("../models/pokemonModel");
- 
+
+// Get all pokemons
+// Recuperer tous les pokemons
 exports.getAllPokemons = async (req, res) => {
   try {
     const pokemons = await Pokemon.find();
@@ -8,7 +10,8 @@ exports.getAllPokemons = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
- 
+
+//Get One pokemon = recuperer un pokemon
 exports.getOnePokemon = async (req, res) => {
   try {
     const pokemon = await Pokemon.findById(req.params.id);
@@ -18,9 +21,24 @@ exports.getOnePokemon = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
- 
-exports.createPokemon = async (req, res) => {};
- 
+// Create Pokemons
+// Creer une pokemon
+exports.createPokemon = async (req, res) => {
+    try {
+        const newPokemon = new Pokemon; ({
+            name : req.body.name,
+            hp: req.body.hp,
+            cp: req.body.cp,
+            picture: req.body.picture,
+            types: req.body.types,
+        });
+      } catch (error) {
+        res.status(500).json({ message: error.message });
+      }
+};
+
+// edit a pokemon
+// Editer un pokemon
 exports.editPokemon = async (req, res) => {};
  
 exports.deletePokemon = async (req, res) => {};
