@@ -7,7 +7,7 @@ const pokemonSchema = new mongoose.Schema(
     // Pas de besoin de l'ID
     name: {
       type: String,
-      require: true,
+      required: true,
     },
     hp: Number,
     cp: Number,

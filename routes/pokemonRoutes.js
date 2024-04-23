@@ -1,5 +1,10 @@
 const express = require('express');
 const router = express.Router();
+const pokemonController = require('../controllers/pokemonController');
+
+//recuper tous les pokemons
+//Get sur localhost
+router.get('/', pokemonController.getAllPokemons)
 
 // Récupérer tous les pokemons
 // GET : localhost:3000/api/pokemons
