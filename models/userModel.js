@@ -21,5 +21,6 @@ const userSchema = new mongoose.Schema(
     }
 )
 
+// Importer le schema du pokemon qui determine les données de la base
 const User = mongoose.model("User", userSchema);
 module.exports = mongoose.model("User", userSchema);
