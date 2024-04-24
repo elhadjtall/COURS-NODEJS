@@ -2,6 +2,8 @@
 // On importe le bcrypt pour crypter les passwords
 const bcrypt = require('bcrypt');
 const User = require('../models/userModel');
+const jwt = require('jsonwebtoken');
+const { header } = require('express/lib/response');
 
 exports.getAllUsers = async (req, res) => {
     try {
@@ -71,3 +73,16 @@ exports.deleteUser = async (req, res) => {
     }  
 }
 
+// Create a login
+exports.login = async (req, res) => {
+    try {
+        const user = await User.findOne({ email: req.body.email });
+        if (!user) return res.status(404).json("invalid identifier");
+        const validPassword = await bcrypt.compare(req.body.password, user.password);
+        if (!validPassword) return res.status(404).json('Invalid identifier');
+        const token = jwt.sign({_id: user._id}, process.env.JWT_SECRET, { expiresIn: '1h' });
+        res.header('auth-token', token).send(token);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
