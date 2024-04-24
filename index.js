@@ -3,10 +3,12 @@ const express = require('express');
 const mongoose = require('mongoose'); 
 const routes = require('./routes');
 require('dotenv').config();
+const cors = require('cors');
 
 // Initialisation de l'application express, on définis le numéro de 
 let app = express();
 let port = 3000;
+app.use(cors());
 
 // Message de bienvenue sur localhost:3000
 app.use(express.json());
