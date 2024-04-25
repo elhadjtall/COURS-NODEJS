@@ -1,11 +1,11 @@
-// Impoorter les dependances
+// Importer les dependances
 
 const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/userController');
 
 
-
+router.get('/verify', userController.verifyToken);
 router.get('/', userController.getAllUsers);
 router.get('/:id', userController.getOneUser);
 router.put('/:id', userController.editUser);
