@@ -1,18 +1,16 @@
-const { type } = require("express/lib/response");
 const mongoose = require("mongoose");
 
-// On creer un schema
 const pokemonSchema = new mongoose.Schema(
   {
-    // Pas de besoin de l'ID
     name: {
       type: String,
       required: true,
+      unique: true,
     },
     hp: Number,
     cp: Number,
     picture: String,
-    Types: {
+    types: {
       type: [String],
       enum: ["Feu", "Eau", "Plante", "Acier", "Combat"],
     },
@@ -20,6 +18,5 @@ const pokemonSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-// Importer le schema du pokemon qui determine les données de la base
 const Pokemon = mongoose.model("Pokemon", pokemonSchema);
 module.exports = Pokemon;

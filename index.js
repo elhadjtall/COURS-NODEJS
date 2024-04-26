@@ -1,31 +1,34 @@
-// on import  express et nodemon c'est à dire dépendances
+// Import des différentes dépendances
 const express = require('express');
-const mongoose = require('mongoose'); 
+const mongoose = require('mongoose');
 const routes = require('./routes');
-require('dotenv').config();
 const cors = require('cors');
+require('dotenv').config();
 
-// Initialisation de l'application express, on définis le numéro de 
+// Initialisation de l'appli express, on définis le numéor de prot
 let app = express();
 let port = 3000;
-app.use(cors());
-
 // Message de bienvenue sur localhost:3000
+app.use(cors());
 app.use(express.json());
 app.get('/', (req, res) => {
-    res.send('welcome to my backend');
-})
-app.use("/api", routes);
-// Ici on va se connecter à la base de donnée grêce Mongoose
+    res.send('Welcome to my backend');
+});
+// Les routes a utiliser sur localhost:3000/api
+app.use('/api', routes);
+
+// Ici on va se connecter a la base de donnée grâce a Mongoose
+// MONGO_URI='mongodb://localhost:27017/pokemondb/'
 mongoose
     .connect(process.env.MONGO_URI, {})
     .then(() => {
-        console.log("connecter à la BDD");
-})
+        console.log("Connectés a la BDD");
+    })
     .catch((err) => {
         console.log('Erreur de connexion', err)
-})
-// On va initialiser et demarerrer notre serveur
+    })
+
+// Ici on lance l'application sur le numéro de port en question.
 app.listen(port, () => {
     console.log("Server en ligne sur le port 3000");
 });
