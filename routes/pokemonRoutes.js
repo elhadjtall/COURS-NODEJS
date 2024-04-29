@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const pokemonController = require('../controllers/pokemonController');
+const dataValidate = require('../utils/dataValidate');
 
 // Get all pokemons
 // GET sur localhost:3000/api/pokemons
