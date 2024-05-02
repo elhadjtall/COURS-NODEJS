@@ -5,6 +5,7 @@ const userController = require('../controllers/userController');
 const dataValidate = require('../utils/dataValidate');
 
 
+router.post('/upload', userController.upload)
 router.post('/register', dataValidate, userController.register)
 // Get all users
 // GET sur localhost:3000/api/users
